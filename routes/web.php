@@ -4,9 +4,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn () => view('welcome'))->name('welcome');
-Route::get('/cms', App\Livewire\Welcome::class)->name('welcome');
-
-Route::get('/dashboard', fn () => view('welcome'))->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/cms', fn () => to_route('cms.dashboard'))->middleware('auth');
+Route::get('/dashboard', fn () => to_route('cms.dashboard'))->middleware('auth')->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -14,4 +13,5 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+require __DIR__.'/cms.php';
 require __DIR__.'/auth.php';

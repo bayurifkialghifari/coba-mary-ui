@@ -35,7 +35,7 @@
                 <div class="flex gap-2">
                     <img src="{{ asset('default-logo.svg') }}" alt="Default Logo" class="mt-1" width="30" />
                     <span class="font-bold text-3xl mr-3 bg-gradient-to-r from-purple-500 to-pink-300 bg-clip-text text-transparent">
-                        Keren
+                        {{ $settings->name }}
                     </span>
                 </div>
             </div>
@@ -64,18 +64,15 @@
                     <x-mary-menu-separator />
                 @endif
 
-                <x-mary-menu-item title="Hello" icon="o-sparkles" link="/" class="active" />
-                <x-mary-menu-sub title="Settings" icon="o-cog-6-tooth" open>
-                    <x-mary-menu-item title="Wifi" icon="o-wifi" link="####" class="active" />
-                    <x-mary-menu-item title="Archives" icon="o-archive-box" link="####" />
-                </x-mary-menu-sub>
+                {{-- Navigation --}}
+                <x-navigation />
             </x-mary-menu>
         </x-slot:sidebar>
 
         {{-- The `$slot` goes here --}}
         <x-slot:content>
             <!-- HEADER -->
-            <x-mary-header title="APP NAME" separator progress-indicator>
+            <x-mary-header title="{{ $settings->name }}" separator progress-indicator>
                 <x-slot:actions>
                     {{-- Theme --}}
                     <x-mary-theme-toggle />
