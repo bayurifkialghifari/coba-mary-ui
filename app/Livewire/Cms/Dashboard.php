@@ -2,9 +2,9 @@
 
 namespace App\Livewire\Cms;
 
-use Livewire\Component;
+use App\Livewire\BaseComponent;
 
-class Dashboard extends Component
+class Dashboard extends BaseComponent
 {
     public function render()
     {

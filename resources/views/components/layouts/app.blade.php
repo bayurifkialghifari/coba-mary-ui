@@ -7,6 +7,10 @@
     <title>{{ $title ?? '' }} | APP NAME</title>
     @livewireStyles
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    {{-- Markdown Editor --}}
+    <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
+    <script src="https://unpkg.com/easymde/dist/easymde.min.js"></script>
 </head>
 <body class="min-h-screen font-sans antialiased bg-base-200/50 dark:bg-base-200">
     {{-- LOGOUT VERIFICATION MODAL --}}
@@ -33,7 +37,7 @@
             {{-- BRAND --}}
             <div class="hidden-when-collapsed p-5 pt-3">
                 <div class="flex gap-2">
-                    <img src="{{ asset('default-logo.svg') }}" alt="Default Logo" class="mt-1" width="30" />
+                    <img src="{{ asset('assets/default-logo.svg') }}" alt="Default Logo" class="mt-1" width="30" />
                     <span class="font-bold text-3xl mr-3 bg-gradient-to-r from-purple-500 to-pink-300 bg-clip-text text-transparent">
                         {{ $settings->name }}
                     </span>

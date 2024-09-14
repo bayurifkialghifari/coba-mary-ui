@@ -1,0 +1,13 @@
+<?php
+
+namespace [namespace];
+
+use App\Livewire\BaseComponent;
+
+class [class] extends BaseComponent
+{
+    public function render()
+    {
+        return view('[view]');
+    }
+}
