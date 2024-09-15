@@ -2,7 +2,6 @@
 
 namespace App\Traits;
 
-use App\Enums\Alert;
 use Spatie\Permission\Exceptions\UnauthorizedException;
 
 trait WithSaveAction {
@@ -16,12 +15,18 @@ trait WithSaveAction {
 
             $this->form->save();
 
-            session()->flash(Alert::success->value, $this->isUpdate ? 'Data Updated' : 'Data Created');
+            $this->success(
+                $this->isUpdate ? 'Data Updated' : 'Data Created',
+                timeout: 2000,
+            );
 
             // Redirect
             $this->closeModal();
         } catch (UnauthorizedException $exception) {
-            $this->dispatch('alert', type: Alert::error->value, message: $exception->getMessage());
+            $this->error(
+                $exception->getMessage(),
+                timeout: 2000,
+            );
         }
     }
 }

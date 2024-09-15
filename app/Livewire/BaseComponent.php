@@ -2,7 +2,6 @@
 
 namespace App\Livewire;
 
-use App\Traits\WithChangeOrder;
 use App\Traits\WithGetFilterData;
 use App\Traits\WithResetAction;
 use App\Traits\WithCreateAction;
@@ -10,6 +9,7 @@ use App\Traits\WithDeleteAction;
 use App\Traits\WithEditAction;
 use App\Traits\WithSaveAction;
 use App\Traits\InteractWithModal;
+use Mary\Traits\Toast;
 use Livewire\WithFileUploads;
 use Livewire\WithPagination;
 use Livewire\Component;
@@ -17,17 +17,18 @@ use Livewire\Component;
 class BaseComponent extends Component {
     use WithPagination,
         WithFileUploads,
-        WithChangeOrder,
         WithGetFilterData,
         WithResetAction,
         WithCreateAction,
         WithEditAction,
         WithDeleteAction,
         WithSaveAction,
-        InteractWithModal;
+        InteractWithModal,
+        Toast;
 
     public $originRoute = '';
     public $previousUrl = '';
+    public $isUpdate = false;
 
     // Image iterator for image set null after save
     public $imageIttr = 1;

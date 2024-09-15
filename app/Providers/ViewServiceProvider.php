@@ -23,7 +23,7 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Facades\View::composer('components.navigation', function(View $view) {
+        Facades\View::composer('components.cms.navigation', function(View $view) {
             $view->with('menus', Menu::with('menuChildren')->orderBy('ordering', 'asc')->where('on', 'cms')->get());
         });
 

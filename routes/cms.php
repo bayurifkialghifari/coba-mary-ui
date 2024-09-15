@@ -10,8 +10,8 @@ Route::group([
     Route::get('/dashboard', App\Livewire\Cms\Dashboard::class)->name('dashboard');
 
     // Management Menu
-    Route::get('/management/menu', App\Livewire\Cms\Dashboard::class)->name('management.menu');
-    Route::get('/management/menu/{menu}', App\Livewire\Cms\Dashboard::class)->name('management.menu.child');
+    Route::get('/management/menu', App\Livewire\Cms\Management\Menu::class)->name('management.menu');
+    Route::get('/management/menu/{menu}', App\Livewire\Cms\Management\Menu\Child::class)->name('management.menu.child');
 
     // Management Role
     Route::get('/management/role', App\Livewire\Cms\Dashboard::class)->name('management.role');

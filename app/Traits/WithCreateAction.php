@@ -2,8 +2,8 @@
 
 namespace App\Traits;
 
-use App\Enums\Alert;
 use Spatie\Permission\Exceptions\UnauthorizedException;
+
 trait WithCreateAction {
     public function create() {
         try {
@@ -16,7 +16,10 @@ trait WithCreateAction {
 
             $this->openModal();
         } catch (UnauthorizedException $exception) {
-            $this->dispatch('alert', type: Alert::error->value, message: $exception->getMessage());
+            $this->error(
+                $exception->getMessage(),
+                timeout: 2000,
+            );
         }
     }
 }

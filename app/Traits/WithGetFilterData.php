@@ -9,16 +9,19 @@ trait WithGetFilterData {
 
     public function getDataWithFilter(Model|Builder $model, array $searchBy = [
         [
-            'name' => '',
-            'field' => '',
+            'label' => '',
+            'key' => '',
             'no_search' => true,
         ]
-    ], string $orderBy = 'id', string $order = 'asc', int $paginate = 10, string $s = '') {
+    ], array $sortBy = [
+        'column' => 'id',
+        'direction' => 'desc',
+    ], int $paginate = 10, string $s = '') {
 
         $model = $model->where(function ($query) use ($s, $searchBy) {
             foreach ($searchBy as $key => $value) {
                 if(!isset($value['no_search'])) {
-                    $field = $value['field'];
+                    $field = $value['key'];
 
                     if(str_contains($field, '.')) {
                         // Relationship search
@@ -34,7 +37,7 @@ trait WithGetFilterData {
             }
         });
 
-        $model = $model->orderBy($orderBy, $order);
+        $model = $model->orderBy(...array_values($sortBy));
 
         $model = $model->latest();
 

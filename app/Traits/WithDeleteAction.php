@@ -2,7 +2,6 @@
 
 namespace App\Traits;
 
-use App\Enums\Alert;
 use Spatie\Permission\Exceptions\UnauthorizedException;
 use Livewire\Attributes\On;
 
@@ -19,9 +18,15 @@ trait WithDeleteAction {
 
             $this->form->delete($id);
 
-            $this->dispatch('alert', type: Alert::success->value, message: 'Data deleted successfully');
+            $this->success(
+                'Data Deleted Successfully',
+                timeout: 2000,
+            );
         } catch (UnauthorizedException $exception) {
-            $this->dispatch('alert', type: Alert::error->value, message: $exception->getMessage());
+            $this->error(
+                $exception->getMessage(),
+                timeout: 2000,
+            );
         }
     }
 }

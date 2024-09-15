@@ -12,10 +12,12 @@
     <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
     <script src="https://unpkg.com/easymde/dist/easymde.min.js"></script>
 </head>
-<body class="min-h-screen font-sans antialiased bg-base-200/50 dark:bg-base-200">
+<body class="min-h-screen font-sans antialiased bg-base-200/50 dark:bg-base-200" data-scroll-x="0">
     {{-- LOGOUT VERIFICATION MODAL --}}
-    <x-logout-verification />
+    <x-cms.modal-logout-verification />
 
+    {{-- Confirmation Modal --}}
+    <x-cms.modal-confirmation />
 
     {{-- NAVBAR mobile only --}}
     <x-mary-nav sticky class="lg:hidden">
@@ -69,7 +71,7 @@
                 @endif
 
                 {{-- Navigation --}}
-                <x-navigation />
+                <x-cms.navigation />
             </x-mary-menu>
         </x-slot:sidebar>
 
@@ -90,4 +92,5 @@
     {{-- Toast --}}
     <x-mary-toast />
     @livewireScripts
+    <x-cms.javascripts />
 </body>
