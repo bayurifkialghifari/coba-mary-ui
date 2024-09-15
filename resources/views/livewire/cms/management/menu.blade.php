@@ -1,6 +1,22 @@
 <div>
     <x-mary-card title="{{ $title ?? '' }}" subtitle="{{ $title ?? '' }} Data" shadow separator>
-        <x-cms.header :$originRoute />
+        <x-cms.header :$originRoute>
+            <x-mary-select
+                :options="[
+                    [
+                        'id' => 'cms',
+                        'name' => 'CMS',
+                    ],
+                    [
+                        'id' => 'web',
+                        'name' => 'Web',
+                    ],
+                ]"
+                placeholder="-- Select Menu On --"
+                class="w-1/3 select-sm text-sm mx-2 mt-5"
+                wire:model.live="on"
+            />
+        </x-cms.header>
         <x-mary-table
             :headers="$searchBy"
             :rows="$get"

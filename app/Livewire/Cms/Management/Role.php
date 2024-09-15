@@ -13,23 +13,24 @@ class Role extends BaseComponent
 
     public $searchBy = [
             [
-                'name' => 'Name',
-                'field' => 'name',
+                'label' => 'Name',
+                'key' => 'name',
             ],
         ],
         $search = '',
-        $isUpdate = false,
         $paginate = 10,
-        $orderBy = 'name',
-        $order = 'asc';
+        $selected = [],
+        $sortBy = [
+            'column' => 'name',
+            'direction' => 'desc',
+        ];
 
     public function render()
     {
         $get = $this->getDataWithFilter(
             model: new RoleModel,
             searchBy: $this->searchBy,
-            orderBy: $this->orderBy,
-            order: $this->order,
+            sortBy: $this->sortBy,
             paginate: $this->paginate,
             s: $this->search
         );

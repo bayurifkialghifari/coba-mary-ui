@@ -5,6 +5,7 @@
 ])
 @can('delete.' . $route)
     <x-mary-button
+        tooltip="Delete"
         icon="o-trash"
         wire:click="{{ $action }}('{{ $id }}')"
         spinner

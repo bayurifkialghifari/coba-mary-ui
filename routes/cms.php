@@ -14,7 +14,7 @@ Route::group([
     Route::get('/management/menu/{menu}', App\Livewire\Cms\Management\Menu\Child::class)->name('management.menu.child');
 
     // Management Role
-    Route::get('/management/role', App\Livewire\Cms\Dashboard::class)->name('management.role');
+    Route::get('/management/role', App\Livewire\Cms\Management\Role::class)->name('management.role');
     Route::get('/management/role-permission/{role?}', App\Livewire\Cms\Dashboard::class)->name('management.role-permission');
 
     // Logs
