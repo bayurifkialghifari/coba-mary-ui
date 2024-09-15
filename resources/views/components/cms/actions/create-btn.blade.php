@@ -7,6 +7,7 @@
         <x-mary-button
             label="Create"
             icon="o-plus"
+            spinner
             class="btn-success btn-sm text-white"
             wire:click="{{ $action }}"
         />
