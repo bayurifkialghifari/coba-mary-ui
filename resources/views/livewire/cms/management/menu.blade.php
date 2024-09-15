@@ -23,7 +23,7 @@
     </x-mary-card>
 
     <x-mary-drawer wire:model="modals.defaultModal" class="w-11/12 lg:w-1/3" right>
-        <x-mary-button label="Close" class="btn-error btn-sm" icon="o-x-mark" x-on:click="$wire.modals['defaultModal'] = false" />
+        <x-mary-button label="Discard" class="btn btn-sm" icon="o-arrow-uturn-left" x-on:click="$wire.modals['defaultModal'] = false" />
         <x-mary-form wire:submit="save" class="mt-5">
             <div class="grid grid-flow-row auto-rows-min gap-1">
                 <div class="grid lg:grid-cols-2 gap-5">
