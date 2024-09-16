@@ -78,7 +78,7 @@
         {{-- The `$slot` goes here --}}
         <x-slot:content>
             <!-- HEADER -->
-            <x-mary-header title="{{ $settings->name }}" separator progress-indicator>
+            <x-mary-header title="{{ $settings->name }}" size="text-xl" separator progress-indicator>
                 <x-slot:actions>
                     {{-- Theme --}}
                     <x-mary-theme-toggle />

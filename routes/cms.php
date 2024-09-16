@@ -15,7 +15,7 @@ Route::group([
 
     // Management Role
     Route::get('/management/role', App\Livewire\Cms\Management\Role::class)->name('management.role');
-    Route::get('/management/role-permission/{role?}', App\Livewire\Cms\Dashboard::class)->name('management.role-permission');
+    Route::get('/management/role-permission/{role?}', App\Livewire\Cms\Management\Role\Permission::class)->name('management.role-permission');
 
     // Logs
     Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index'])->name('logs');

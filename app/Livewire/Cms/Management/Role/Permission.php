@@ -20,6 +20,10 @@ class Permission extends BaseComponent
         'delete',
     ];
     public $routeExcept = [
+        'mary.toogle-sidebar',
+        'mary.spotlight',
+        'mary.upload',
+        'storage.local',
         'sanctum.csrf-cookie',
         'livewire.update',
         'livewire.upload-file',
@@ -41,7 +45,6 @@ class Permission extends BaseComponent
         $this->title = 'Role Permissions - ' . ucfirst($this->role->name);
 
         $this->getPermission();
-        // dd($this->permissions);
     }
 
     public function render()

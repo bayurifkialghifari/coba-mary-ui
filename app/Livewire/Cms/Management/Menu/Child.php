@@ -17,27 +17,29 @@ class Child extends BaseComponent
 
     public $searchBy = [
             [
-                'name' => 'Name',
-                'field' => 'name',
+                'label' => 'Name',
+                'key' => 'name',
             ],
             [
-                'name' => 'Icon',
-                'field' => 'icon',
+                'label' => 'Icon',
+                'key' => 'icon',
             ],
             [
-                'name' => 'Route',
-                'field' => 'route',
+                'label' => 'Route',
+                'key' => 'route',
             ],
             [
-                'name' => 'Ordering',
-                'field' => 'ordering',
+                'label' => 'Ordering',
+                'key' => 'ordering',
             ],
         ],
         $search = '',
-        $isUpdate = false,
         $paginate = 10,
-        $orderBy = 'ordering',
-        $order = 'asc';
+        $selected = [],
+        $sortBy = [
+            'column' => 'name',
+            'direction' => 'desc',
+        ];
 
     public $menu;
 
@@ -57,8 +59,7 @@ class Child extends BaseComponent
         $get = $this->getDataWithFilter(
             model: $model,
             searchBy: $this->searchBy,
-            orderBy: $this->orderBy,
-            order: $this->order,
+            sortBy: $this->sortBy,
             paginate: $this->paginate,
             s: $this->search
         );
@@ -82,12 +83,18 @@ class Child extends BaseComponent
             $this->form->menu_id = $this->menu->id;
             $this->form->save();
 
-            session()->flash(Alert::success->value, $this->isUpdate ? 'Data Updated' : 'Data Created');
+            $this->success(
+                $this->isUpdate ? 'Data Updated' : 'Data Created',
+                timeout: 2000,
+            );
 
             // Redirect
             $this->closeModal();
         } catch (UnauthorizedException $exception) {
-            $this->dispatch('alert', type: Alert::error->value, message: $exception->getMessage());
+            $this->error(
+                $exception->getMessage(),
+                timeout: 2000,
+            );
         }
     }
 }

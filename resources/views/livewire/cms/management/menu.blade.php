@@ -31,6 +31,15 @@
             </x-slot:empty>
             @scope('actions', $data, $originRoute)
                 <div class="flex">
+                    <x-mary-button
+                        tooltip="Menu Children"
+                        icon="o-plus"
+                        link="{{ route('cms.management.menu.child', [
+                            'menu' => $data->id,
+                        ]) }}"
+                        spinner
+                        class="btn-ghost text-primary btn-sm"
+                    />
                     <x-cms.actions.update-btn :route="$originRoute" :id="$data->id" />
                     <x-cms.actions.delete-btn :route="$originRoute" :id="$data->id" />
                 </div>
